@@ -1,0 +1,178 @@
+window.dailyBriefingData = {
+  reportSnapshot: {
+    title: "每日 PR 与足球情报日报",
+    subtitle: "直播间弹幕版",
+    generatedAt: "2026-06-08 17:13（UTC+8）",
+    sourceNote: "内容来自自动化项目“每日 PR 与足球情报日报”的最近一次可验证成稿快照。"
+  },
+  bulletins: [
+    {
+      id: "engineering-open-prs",
+      team: "工程动态",
+      code: "DEV",
+      crest: "",
+      category: "PR / Review",
+      status: "今日无新增",
+      title: "PR #4 仍待评审，今天没有新增 review",
+      summary: "hkmu_campus_platform 当前仍有 2 条 open PR；6 月 8 日没有检索到 panbaian8-svg 的新增 PR 或评审动作。",
+      body: "自动化快照确认：本地仓库没有绑定远端，GitHub 可见动态集中在 3031445204zelsy17-lang/hkmu_campus_platform。PR #4 保持 open，96 个改动文件，requested reviewer 包含 panbaian8-svg；PR #3 也仍处于 open。两条 PR 都没有新的评论或 review。发布与事故数据源当前没有接入，因此日报明确标注为暂无可验证新增。",
+      date: "2026-06-08",
+      watch: "继续关注 PR #4 是否出现 review，以及是否补充发布或事故数据源。",
+      sources: [
+        {
+          label: "GitHub PR #4: [手机端] feat: 上传移动端版本",
+          url: "https://github.com/3031445204zelsy17-lang/hkmu_campus_platform/pull/4"
+        },
+        {
+          label: "GitHub PR #3: feat: add today widget prototype",
+          url: "https://github.com/3031445204zelsy17-lang/hkmu_campus_platform/pull/3"
+        },
+        {
+          label: "自动化快照：发布与事故源暂无可访问新增"
+        }
+      ]
+    },
+    {
+      id: "manutd-transfers",
+      team: "曼联",
+      code: "MU",
+      crest: "https://en.wikipedia.org/wiki/Special:FilePath/Manchester_United_FC_crest.svg",
+      category: "阵容 / 管理层",
+      status: "官宣为主",
+      title: "霍伊伦德离队，希顿与卡里克完成续约",
+      summary: "曼联近期最明确的变化集中在前锋离队、门将续约和教练组续约。",
+      body: "自动化成稿将曼联整理为三条可验证主线：官网新闻流出现霍伊伦德转会那不勒斯；汤姆·希顿续约到 2027 年；卡里克执教合同延长到 2028 年，教练团队同步续约。未确认转会传闻没有写入正式结论。",
+      date: "2026-06-08",
+      watch: "继续关注世界杯期间国脚状态，以及夏窗后续是否出现新的正式签约。",
+      sources: [
+        {
+          label: "Manchester United 官方新闻流",
+          url: "https://www.manutd.com/en/news"
+        },
+        {
+          label: "Why Heaton is delighted to remain at United",
+          url: "https://www.manutd.com/en/news/tom-heaton-discusses-new-manchester-united-contract-june-2026"
+        },
+        {
+          label: "Carrick continues as United head coach",
+          url: "https://www.manutd.com/ko/news/michael-carrick-continues-as-man-united-head-coach-2026"
+        }
+      ]
+    },
+    {
+      id: "realmadrid-leadership",
+      team: "皇马",
+      code: "RM",
+      crest: "https://en.wikipedia.org/wiki/Special:FilePath/Real_Madrid_CF.svg",
+      category: "管理层 / 世界杯关联",
+      status: "管理层稳定",
+      title: "皇马主线仍是管理层稳定与阿拉巴告别",
+      summary: "皇马近期焦点集中在弗洛伦蒂诺连任与阿拉巴离队致谢。",
+      body: "官方来源显示，弗洛伦蒂诺在 6 月 7 日继续担任俱乐部主席；5 月 22 日皇马已官宣阿拉巴离队并发布致谢内容。世界杯关联方面，维尼修斯和恩德里克在巴西队热身赛中的表现，是近期与皇马一线队最相关的赛场信号。",
+      date: "2026-06-08",
+      watch: "关注世界杯前后是否出现正式引援，或者一线队新的伤病通报。",
+      sources: [
+        {
+          label: "Florentino Perez presidente del Real Madrid",
+          url: "https://www.realmadrid.com/en-US/news/club/latest-news/florentino-perez-presidente-del-real-madrid-07-06-2026"
+        },
+        {
+          label: "Official Statement: Alaba",
+          url: "https://www.realmadrid.com/en-US/news/club/announcements/comunicado-oficial-alaba-22-05-2026"
+        }
+      ]
+    },
+    {
+      id: "france-prep",
+      team: "法国队",
+      code: "FRA",
+      crest: "https://en.wikipedia.org/wiki/Special:FilePath/France_national_football_team_seal.svg",
+      category: "世界杯备战",
+      status: "持续磨合",
+      title: "法国队的最后热身窗口仍在磨合阵容",
+      summary: "法国队近期主线是世界杯前热身、阵容磨合与伤病观察。",
+      body: "自动化将法国队重点放在世界杯前最后热身窗口。公开来源显示，法国队先后面对科特迪瓦与北爱尔兰，主线是德尚如何继续轮换锋线和中场组合，以及伤病名单是否进一步扩大。",
+      date: "2026-06-08",
+      watch: "下一步最值得盯的是主力组合是否收敛，以及伤病名单有没有新增。",
+      sources: [
+        {
+          label: "FFF: France-Côte d'Ivoire 阵容页",
+          url: "https://www.fff.fr/article/16917-les-compos-pour-france-cote-d-ivoire.html"
+        },
+        {
+          label: "FFF: Contre l'Irlande du Nord le 8 juin",
+          url: "https://www.fff.fr/article/16641-contre-l-irlande-du-nord-le-8-juin.html"
+        }
+      ]
+    },
+    {
+      id: "acmilan-restructure",
+      team: "AC米兰",
+      code: "MIL",
+      crest: "https://commons.wikimedia.org/wiki/Special:FilePath/Logo_of_AC_Milan.svg",
+      category: "管理层 / 国脚动态",
+      status: "管理层调整",
+      title: "AC 米兰近期焦点仍是管理层重组",
+      summary: "相比转会传闻，最确定的米兰动态仍是 RedBird 足球业务重组。",
+      body: "自动化快照将米兰写成消息稀少但结论清晰：RedBird 在 5 月 25 日宣布足球业务重组，是目前最确定的俱乐部级动态；球员层面更多是迈尼昂等国脚的国家队出场信息，还不足以构成新的俱乐部官宣。",
+      date: "2026-06-08",
+      watch: "等夏窗首批正式公告落地后，再把转会和阵容变化扩成新的弹幕条目。",
+      sources: [
+        {
+          label: "RedBird Capital Partners Official Statement",
+          url: "https://www.acmilan.com/en/news/articles/club/2026-05-25/redbird-capital-partners-official-statement"
+        },
+        {
+          label: "Maignan and Rabiot feature for France",
+          url: "https://www.acmilan.com/en/news/articles/internationals/2026-06-05/maignan-and-rabiot-feature-for-france"
+        }
+      ]
+    },
+    {
+      id: "croatia-squad",
+      team: "克罗地亚队",
+      code: "CRO",
+      crest: "https://commons.wikimedia.org/wiki/Special:FilePath/Croatian_Football_Federation_logo.svg",
+      category: "世界杯备战",
+      status: "经验班底",
+      title: "克罗地亚继续用成熟班底推进世界杯备战",
+      summary: "关键消息是热身赛、格瓦迪奥尔回归和世界杯驻地安排。",
+      body: "自动化将克罗地亚回到世界杯主线：热身赛结果说明节奏仍在调整，FIFA 对名单的梳理强调经验与年轻球员混编，HNS 公开的驻地与媒体安排则表明球队已经进入比赛周节奏。",
+      date: "2026-06-08",
+      watch: "继续关注老将负荷控制，以及后防轮换是否还会微调。",
+      sources: [
+        {
+          label: "HNS News Archive",
+          url: "https://hns.family/en/news/?cid=125"
+        },
+        {
+          label: "FIFA: Croatia squad named",
+          url: "https://www.fifa.com/en/articles/croatia-squad-named"
+        }
+      ]
+    },
+    {
+      id: "brazil-injuries",
+      team: "巴西队",
+      code: "BRA",
+      crest: "https://commons.wikimedia.org/wiki/Special:FilePath/Brazilian_Football_Confederation_logo.svg",
+      category: "伤病 / 备战",
+      status: "伤病观察",
+      title: "巴西热身赛连胜，但伤病与补招仍是主线",
+      summary: "巴西核心信息收敛为热身赛连胜、内马尔伤情观察、韦斯利伤退后补招埃德森。",
+      body: "巴西最强的信号不是单纯比分，而是阵容可用性。FIFA 与巴西足协公开信息显示，球队在热身阶段赢下巴拿马与埃及，但内马尔恢复进度仍受关注，韦斯利伤退后的替补征召也提示后防配置还在动态调整。",
+      date: "2026-06-08",
+      watch: "重点盯内马尔训练负荷、首战出场时间，以及后防替补方案是否稳定。",
+      sources: [
+        {
+          label: "FIFA: Brasil 6-2 Panamá",
+          url: "https://www.fifa.com/pt/tournaments/mens/worldcup/canadamexicousa2026/articles/brasil-panama-copa-mundo-amistoso-2026"
+        },
+        {
+          label: "CBF: Wesley 伤退，Ederson 补招",
+          url: "https://www.cbf.com.br/selecao-brasileira/noticias/index/wesley-e-desconvocado-ederson-e-convocado-para-a-copa-do-mundo"
+        }
+      ]
+    }
+  ]
+};
