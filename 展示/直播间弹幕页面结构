@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>每日 PR 与足球情报日报 | 直播间弹幕版</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Automation Live Deck</p>
+        <h1>每日 PR 与足球情报日报</h1>
+        <p class="hero-text">
+          把原有自动化成稿改造成直播间弹幕视图。按曼联、皇马、法国队、AC 米兰、克罗地亚、巴西和工程动态分别给出主题色与队徽，
+          打开对话框后消息会从右向左逐条划过，点击任意一条即可查看完整内容与来源。
+        </p>
+        <div class="hero-actions">
+          <button id="openBriefing" class="primary-button" type="button" aria-haspopup="dialog" aria-expanded="false">
+            打开直播间日报
+          </button>
+          <p class="snapshot-note">当前展示内容来自最近一次自动化快照：<span id="snapshotStamp">加载中</span></p>
+        </div>
+      </div>
+
+      <div class="hero-side">
+        <div class="signal-card">
+          <span class="signal-label">展示模式</span>
+          <strong>直播间弹幕 + 详情联动</strong>
+          <p>对话框打开后自动开播，关闭即停止，不会在后台持续跑动。</p>
+        </div>
+        <div class="signal-card">
+          <span class="signal-label">内容来源</span>
+          <strong>原有自动化成稿快照</strong>
+          <p>当前是静态快照接入版，后续可以继续换成每日自动生成的 JSON 数据流。</p>
+        </div>
+      </div>
+    </header>
+
+    <section class="overview-grid" aria-label="概览">
+      <article class="overview-card">
+        <p class="panel-kicker">Coverage</p>
+        <h2 id="coverageCount">7 条可点击消息</h2>
+        <p>覆盖工程动态、三家俱乐部和三支国家队，适合直接做每日播报展示。</p>
+      </article>
+      <article class="overview-card">
+        <p class="panel-kicker">Motion</p>
+        <h2>右向左逐条进场</h2>
+        <p>每条消息按独立轨道划过，停顿和继续都只影响当前对话框，不干扰详情阅读。</p>
+      </article>
+      <article class="overview-card">
+        <p class="panel-kicker">Interaction</p>
+        <h2>点击进入详情</h2>
+        <p>弹幕与下方索引卡片双向联动，来源、日期、状态和后续关注点会同步展开。</p>
+      </article>
+    </section>
+
+    <section class="theme-board" aria-labelledby="themeTitle">
+      <div class="section-head">
+        <div>
+          <p class="panel-kicker">Theme Board</p>
+          <h2 id="themeTitle">球队配色与队徽</h2>
+        </div>
+        <p class="section-copy">这些主题会同时作用在弹幕、索引卡片和详情面板上。</p>
+      </div>
+      <div id="teamLegend" class="team-legend"></div>
+    </section>
+  </div>
+
+  <div id="briefingDialog" class="briefing-dialog" aria-hidden="true">
+    <div class="dialog-backdrop" data-close-dialog="true"></div>
+    <div class="dialog-card" role="dialog" aria-modal="true" aria-labelledby="dialogTitle">
+      <button id="closeDialog" class="close-button" type="button" aria-label="关闭直播间日报">关闭</button>
+
+      <div class="dialog-header">
+        <div class="dialog-copy">
+          <p class="eyebrow">On Air</p>
+          <h2 id="dialogTitle">直播间弹幕日报</h2>
+          <p class="dialog-text">
+            本页内容取自原有自动化项目最近一次可验证成稿快照，不额外补写未确认事件。
+            弹幕打开即依次入场，点击后可在右侧查看该消息的完整内容与引用来源。
+          </p>
+        </div>
+        <div class="dialog-meta">
+          <div class="meta-pill">
+            <span>状态</span>
+            <strong>ON AIR</strong>
+          </div>
+          <div class="meta-pill">
+            <span>数据快照</span>
+            <strong id="dialogSnapshot">加载中</strong>
+          </div>
+        </div>
+      </div>
+
+      <div id="dialogLegend" class="team-legend compact"></div>
+
+      <section class="stage-panel">
+        <div class="panel-head">
+          <div>
+            <p class="panel-kicker">Live Feed</p>
+            <h3>打开即滚动，点击可看详情</h3>
+          </div>
+          <button id="toggleMotion" class="ghost-button" type="button">暂停弹幕</button>
+        </div>
+
+        <div id="danmakuStage" class="danmaku-stage" aria-live="polite">
+          <div class="stage-placeholder">
+            <span class="placeholder-pill">右向左</span>
+            <p>弹幕对话框已经就位，消息会按顺序从右侧进场。</p>
+          </div>
+          <div class="stage-glow"></div>
+        </div>
+      </section>
+
+      <div class="dialog-grid">
+        <section class="queue-panel">
+          <div class="queue-head">
+            <div>
+              <p class="panel-kicker">Queue</p>
+              <h3>消息索引</h3>
+            </div>
+            <p class="queue-copy">点击任意卡片，会同步聚焦详情并补发一条对应弹幕。</p>
+          </div>
+          <div id="messageRail" class="message-rail"></div>
+        </section>
+
+        <aside class="detail-panel">
+          <div id="detailAccent" class="detail-accent"></div>
+          <div class="detail-body">
+            <p class="panel-kicker">Detail View</p>
+            <div class="detail-title-row">
+              <div id="detailBadge" class="detail-badge">🧩</div>
+              <div class="detail-title-copy">
+                <h3 id="detailTitle">点击一条消息查看详情</h3>
+                <p id="detailSummary" class="detail-summary">
+                  这里会展示被选中消息的完整说明、来源链接、状态和下一步值得关注的点。
+                </p>
+              </div>
+            </div>
+
+            <dl class="detail-grid">
+              <div>
+                <dt>对象</dt>
+                <dd id="detailTeam">待选择</dd>
+              </div>
+              <div>
+                <dt>日期</dt>
+                <dd id="detailDate">--</dd>
+              </div>
+              <div>
+                <dt>分类</dt>
+                <dd id="detailCategory">--</dd>
+              </div>
+              <div>
+                <dt>状态</dt>
+                <dd id="detailStatus">--</dd>
+              </div>
+            </dl>
+
+            <div class="detail-block">
+              <h4>完整说明</h4>
+              <p id="detailBody">
+                当前是原型页面，数据会从 `app.js` 中的自动化快照对象读取。后续如果你要接上每日自动生成数据，
+                只需要把这部分换成 JSON 或接口请求即可。
+              </p>
+            </div>
+
+            <div class="detail-block">
+              <h4>来源</h4>
+              <ul id="detailSources" class="source-list"></ul>
+            </div>
+
+            <div class="detail-block">
+              <h4>下一步关注</h4>
+              <p id="detailWatch">--</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <script src="./daily-briefing-data.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
